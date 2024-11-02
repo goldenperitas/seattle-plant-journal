@@ -55,8 +55,8 @@ class CreaturesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def creature_params
     params.require(:creature).permit(
-      :english_name, 
-      :scientific_name, 
+      :english_name,
+      :scientific_name,
       :description
     )
   end
