@@ -2,35 +2,55 @@
 
 <p style="color: green"><%= notice %></p>
 
-<%= link_to "← Back to the list", creatures_path %>
-
-<div class="my-3">
-  <h1 class="fs-1 fw-bolder mb-1"><%= @creature.english_name %></h1>
-  <div class="fst-italic"><%= @creature.scientific_name %></div>
-  <div><%= @creature.twulshootseed %></div>
+<div class="small mb-3">
+  <%= link_to creatures_path do %>
+    <i class="fas fa-arrow-left"></i> Back to the list
+  <% end %>
 </div>
 
-<div class="small">
+<div class="mb-2">
+  <h1 class="fs-1 fw-bolder mb-1"><%= @creature.english_name %></h1>
+  <div class="fst-italic small"><%= @creature.scientific_name %></div>
+  <div class="small"><%= @creature.twulshootseed %></div>
+</div>
+
+<div class="mb-3">
+  <a href="https://google.com" class="btn btn-outline-secondary rounded-pill" target="_blank">
+    <i class="fa-brands fa-facebook small text-muted"></i>
+  </a>
+  <a href="https://google.com" class="btn btn-outline-secondary rounded-pill" target="_blank">
+    <i class="fa-brands fa-x-twitter small text-muted"></i>
+  </a>
+  <a href="https://google.com" class="btn btn-outline-secondary rounded-pill" target="_blank">
+    <i class="fa-regular fa-envelope small text-muted"></i>
+  </a>
+  <a href="https://google.com" class="btn btn-outline-secondary rounded-pill" target="_blank">
+    <i class="fa-regular fa-copy small text-muted"></i>
+  </a>
+</div>
+
+<div class="">
+  <span class="fw-bold">Quick Description: </span>
   <%= simple_format @creature.description %>
 </div>
 
 <div id="links">
-  <h2>Links</h2>
+  <h2 class="fs-4"><i class="fa-solid fa-link text-black-50 small me-2"></i>Links</h2>
   <hr class="mt-1">
 </div>
 
 <div id="photos">
-  <h2>Photos</h2>
+  <h2 class="fs-4"><i class="fa-solid fa-images text-black-50 small me-2"></i>Additional Photos</h2>
   <hr class="mt-1">
 </div>
 
 <div id="related">
-  <h2>Related Species</h2>
+  <h2 class="fs-4"><i class="fa-solid fa-seedling text-black-50 small me-2"></i>Related Species</h2>
   <hr class="mt-1">
 </div>
 
 <div id="posts">
-  <h2>Community Posts</h2>
+  <h2 class="fs-4"><i class="fa-solid fa-comments text-black-50 small me-2"></i>Community Posts</h2>
   <hr class="mt-1">
 </div>
 
