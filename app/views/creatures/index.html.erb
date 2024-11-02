@@ -1,0 +1,11 @@
+<% content_for :title, "List of Plants" %>
+
+<main class="container">
+  <div class="header">
+    <h1>Creatures</h1>
+    <%= link_to "New Creature", new_creature_path %>
+    <p style="color: green"><%= notice %></p>
+  </div>
+
+  <%= render @creatures %>
+</main>

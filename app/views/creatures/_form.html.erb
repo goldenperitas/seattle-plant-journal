@@ -1,0 +1,32 @@
+<%= form_with(model: creature) do |f| %>
+  <% if creature.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(creature.errors.count, "error") %> prohibited this creature from being saved:</h2>
+
+      <ul>
+        <% creature.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <div>
+      <%= f.label :english_name %>
+      <%= f.text_field :english_name %>
+    </div>
+
+    <div>
+      <%= f.label :scientific_name %>
+      <%= f.text_field :scientific_name %>
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    
+    <%= f.submit %>
+  </div>
+<% end %>

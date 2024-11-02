@@ -28,4 +28,9 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      creature:
+        english_name: "English Name" 
+        scientific_name: "Scientific Name"
+        description: "Description"

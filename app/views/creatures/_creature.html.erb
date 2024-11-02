@@ -1,0 +1,7 @@
+<div class="creature">
+  <%= link_to creature.english_name, creature_path(creature) %>
+  <div class="creature__actions">
+    <%= button_to "Delete", creature_path(creature), method: :delete %>
+    <%= link_to "Edit", edit_creature_path(creature) %>
+  </div>
+</div>
