@@ -1,0 +1,14 @@
+// Place all the styles related to the Farms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// Import components 
+@import 'variables';
+@import 'bootstrap_enhancements';
+@import 'mobile_bottom_nav';
+
+// Global styles
+body {
+    font-family: monospace !important;
+    background-color: $background-color !important;
+}

@@ -1,10 +1,42 @@
+<% content_for :title, @creature.english_name %>
+
 <p style="color: green"><%= notice %></p>
 
-<%= render @creature %>
+<%= link_to "← Back to the list", creatures_path %>
 
-<div>
-  <%= link_to "Edit this creature", edit_creature_path(@creature) %> |
-  <%= link_to "Back to creatures", creatures_path %>
-
-  <%= button_to "Destroy this creature", @creature, method: :delete %>
+<div class="my-3">
+  <h1 class="fs-1 fw-bolder mb-1"><%= @creature.english_name %></h1>
+  <div class="fst-italic"><%= @creature.scientific_name %></div>
 </div>
+
+<div class="small">
+  <%= simple_format @creature.description %>
+</div>
+
+<div id="links">
+  <h2>Links</h2>
+  <hr class="mt-1">
+</div>
+
+<div id="photos">
+  <h2>Photos</h2>
+  <hr class="mt-1">
+</div>
+
+<div id="related">
+  <h2>Related Species</h2>
+  <hr class="mt-1">
+</div>
+
+<div id="posts">
+  <h2>Community Posts</h2>
+  <hr class="mt-1">
+</div>
+
+<div class="my-3">
+  <span>Admin Only: </span>
+  <%= link_to "Edit", edit_creature_path(@creature) %> |
+  <%= link_to "Destroy", @creature, method: :delete %>
+</div>
+
+<%= render "creatures/mobile_bottom_nav" %>

@@ -1,0 +1,23 @@
+@import 'variables';
+
+#creatureMobileBottomNav {
+    .navbar {
+        background-color: $primary-color;
+    }
+
+    .nav-item__icon {
+        color: $background-color;
+        font-size: 1.7em;
+    }
+    
+    .nav-item__icon:hover {
+        color: #f4e8c3;
+        font-size: 1.7em;
+    }
+
+    .nav-item__desc {
+        font-size: 0.7rem;
+        color: $background-color;
+    }
+}
+
