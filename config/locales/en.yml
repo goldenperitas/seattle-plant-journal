@@ -33,4 +33,5 @@ en:
       creature:
         english_name: "English Name" 
         scientific_name: "Scientific Name"
+        twulshootseed: "Twulshootseed Name"
         description: "Description"

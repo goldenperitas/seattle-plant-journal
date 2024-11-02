@@ -57,6 +57,7 @@ class CreaturesController < ApplicationController
     params.require(:creature).permit(
       :english_name,
       :scientific_name,
+      :twulshootseed,
       :description
     )
   end
