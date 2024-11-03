@@ -15,6 +15,17 @@
     }
 }
 
+.btn-spj-outline-primary {
+    background-color: $background-color !important;
+    color: $primary-color !important;
+    border-color: $primary-color !important;
+
+    &:hover {
+        background-color: $primary-color !important;
+        color: $background-color !important;
+    }
+}
+
 .card-spj-default {
     background-color: $background-color !important;
 

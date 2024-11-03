@@ -61,6 +61,16 @@
 <div id="posts" class="mb-4">
   <h2 class="fs-4"><i class="fa-solid fa-comments text-black-50 small me-2"></i>Community Posts</h2>
   <hr class="mt-1">
+  <div class="d-sm-block d-grid gap-2 mb-3">
+    <a href="#!" class="btn btn-spj-primary"><i class="fa-solid fa-hand me-2"></i>I found it!</a>
+    <a href="#!" class="btn btn-spj-outline-primary"><i class="fa-solid fa-comment me-2"></i>Share Your Story</a>
+  </div>
+
+  <% if @creature_comments.present? %>
+    
+  <% else %>
+    <div class="text-center small text-muted pt-1 pb-2">There is no comment...just yet. You can be the first one! <i class="fa-solid fa-face-smile-wink"></i></div>
+  <% end %>
 </div>
 
 <div class="mb-2">
