@@ -16,5 +16,4 @@ class CreatureResource < ApplicationRecord
     art: 7,
     other: 99
   }, _prefix: true
-
 end
