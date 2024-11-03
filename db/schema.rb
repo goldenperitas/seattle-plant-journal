@@ -15,12 +15,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_03_210831) do
   enable_extension "plpgsql"
 
   create_table "creature_resources", force: :cascade do |t|
+    t.bigint "creature_id", null: false
     t.integer "resource_type", default: 0
     t.string "url"
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["creature_id"], name: "index_creature_resources_on_creature_id"
   end
 
   create_table "creatures", force: :cascade do |t|
@@ -31,4 +33,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_03_210831) do
     t.datetime "updated_at", null: false
     t.string "twulshootseed"
   end
+
+  add_foreign_key "creature_resources", "creatures"
 end

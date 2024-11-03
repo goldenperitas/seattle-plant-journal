@@ -16,5 +16,13 @@ body {
 
     :focus { 
         outline: 1.5px solid $primary-color !important; 
-    } 
+    }
+
+    a {
+        color: $link-color;
+
+        &:hover {
+            color: darken($link-color, 10%);
+        }
+    }
 }

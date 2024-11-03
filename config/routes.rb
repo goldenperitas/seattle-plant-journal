@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   # Creatures routes
   resources :creatures
+
+  # CreatureResources routes
+  resources :creature_resources
 end

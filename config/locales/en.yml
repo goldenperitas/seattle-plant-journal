@@ -35,3 +35,21 @@ en:
         scientific_name: "Scientific Name"
         twulshootseed: "Twulshootseed Name"
         description: "Description"
+      creature_resource:
+        creature_id: "Creature"
+        resource_type: "Resource Type"
+        title: "Title"
+        url: "Resource URL"
+        description: "Description"
+  enums:
+    creature_resource:
+      resource_type:
+        website: "Website"
+        video: "Video"
+        audio: "Audio/Music"
+        book: "Book"
+        paper: "Paper"
+        event: "Event"
+        location: "Location"
+        art: "Art"
+        other: "Other"

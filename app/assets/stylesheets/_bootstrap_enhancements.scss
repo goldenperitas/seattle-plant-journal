@@ -14,3 +14,11 @@
         border-color: darken($primary-color, 10%) !important;
     }
 }
+
+.card-spj-default {
+    background-color: $background-color !important;
+
+    &:hover {
+        background-color: lighten($background-color, 0.75%) !important;
+    }
+}

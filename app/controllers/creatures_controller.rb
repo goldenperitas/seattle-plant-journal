@@ -8,6 +8,8 @@ class CreaturesController < ApplicationController
 
   # GET /creatures/1 or /creatures/1.json
   def show
+    @creature = Creature.includes(:creature_resources).find(params[:id])
+    @creature_resources = @creature.creature_resources
   end
 
   # GET /creatures/new

@@ -1,0 +1,12 @@
+<% content_for :title, "Editing creature resource" %>
+
+<h1>Editing creature resource</h1>
+
+<%= render "form", creature_resource: @creature_resource %>
+
+<br>
+
+<div>
+  <%= link_to "Show this creature resource", @creature_resource %> |
+  <%= link_to "Back to creature resources", creature_resources_path %>
+</div>

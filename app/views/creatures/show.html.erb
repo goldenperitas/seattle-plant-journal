@@ -34,23 +34,31 @@
   <%= simple_format @creature.description %>
 </div>
 
-<div id="links" class="mb-2">
+<div id="links" class="mb-4">
   <h2 class="fs-4"><i class="fa-solid fa-share-from-square text-black-50 small me-2"></i>Resources</h2>
   <hr class="mt-1">
-  <% 10.times do %>a<br><% end %>
+
+  <% if @creature_resources.present? %>
+    <% @creature_resources.each do |creature_resource| %>
+      <%= render "creatures/creature_resource_card", creature_resource: creature_resource %>
+    <% end %>
+  <% else %>
+    <div class="text-center small text-muted pt-1 pb-2">There are no resources registered yet. Please check back again in a few days! <i class="fa-solid fa-face-dizzy"></i></div>
+  <% end %>
+  
 </div>
 
-<div id="photos" class="mb-2">
+<div id="photos" class="mb-4">
   <h2 class="fs-4"><i class="fa-solid fa-images text-black-50 small me-2"></i>Additional Photos</h2>
   <hr class="mt-1">
 </div>
 
-<div id="related" class="mb-2">
+<div id="related" class="mb-4">
   <h2 class="fs-4"><i class="fa-solid fa-seedling text-black-50 small me-2"></i>Related Species</h2>
   <hr class="mt-1">
 </div>
 
-<div id="posts" class="mb-3">
+<div id="posts" class="mb-4">
   <h2 class="fs-4"><i class="fa-solid fa-comments text-black-50 small me-2"></i>Community Posts</h2>
   <hr class="mt-1">
 </div>

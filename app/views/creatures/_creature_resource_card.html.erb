@@ -1,0 +1,15 @@
+<div id="<%= dom_id creature_resource %>" class="card card-spj-default shadow-sm m-1">
+  <div class="card-body">
+    <div>
+      <%= resource_type_icon(creature_resource.resource_type) %>
+      
+      <% if creature_resource.url.present? %>
+        <%= link_to creature_resource.title, creature_resource.url, { target: "_blank", class: "fw-bolder stretched-link"} %>
+      <% else %>
+        <span class="fw-bolder"><%= creature_resource.title %></span>
+      <% end %>
+      
+    </div>
+    <div class="small"><%= creature_resource.description %></div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<%= form_with(model: creature_resource) do |f| %>
+  <% if creature_resource.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(creature_resource.errors.count, "error") %> prohibited this creature_resource from being saved:</h2>
+
+      <ul>
+        <% creature_resource.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <div>
+      <%= f.label :creature_id %>
+      <%= f.collection_select :creature_id, Creature.all, :id, :english_name, {}, {class: ""} %>
+    </div>
+
+    <div>
+      <%= f.label :resource_type %>
+      <%= f.select :resource_type, CreatureResource.resource_types.keys.map {|k| [I18n.t("enums.creature_resource.resource_type.#{k}"), k]}, {}, {class: ""} %>
+    </div>
+
+    <div>
+      <%= f.label :url %>
+      <%= f.url_field :url %>
+    </div>
+
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+
+    <%= f.submit %>
+  </div>
+<% end %>
