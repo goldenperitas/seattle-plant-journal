@@ -29,35 +29,40 @@
   </a>
 </div>
 
-<div class="">
+<div class="mb-3">
   <span class="fw-bold">Quick Description: </span>
   <%= simple_format @creature.description %>
 </div>
 
-<div id="links">
+<div id="links" class="mb-2">
   <h2 class="fs-4"><i class="fa-solid fa-link text-black-50 small me-2"></i>Links</h2>
   <hr class="mt-1">
+  <% 10.times do %>a<br><% end %>
 </div>
 
-<div id="photos">
+<div id="photos" class="mb-2">
   <h2 class="fs-4"><i class="fa-solid fa-images text-black-50 small me-2"></i>Additional Photos</h2>
   <hr class="mt-1">
 </div>
 
-<div id="related">
+<div id="related" class="mb-2">
   <h2 class="fs-4"><i class="fa-solid fa-seedling text-black-50 small me-2"></i>Related Species</h2>
   <hr class="mt-1">
 </div>
 
-<div id="posts">
+<div id="posts" class="mb-3">
   <h2 class="fs-4"><i class="fa-solid fa-comments text-black-50 small me-2"></i>Community Posts</h2>
   <hr class="mt-1">
 </div>
 
-<div class="my-3">
+<div class="mb-2">
   <span>Admin Only: </span>
   <%= link_to "Edit", edit_creature_path(@creature) %> |
   <%= link_to "Destroy", @creature, method: :delete %>
+</div>
+
+<div class="mb-3">
+  <span class="small text-muted">Last updated at: <%= @creature.updated_at.strftime("%Y-%m-%d") %></span>
 </div>
 
 <%= render "creatures/mobile_bottom_nav" %>
