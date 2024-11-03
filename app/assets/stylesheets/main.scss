@@ -7,9 +7,14 @@
 @import 'bootstrap_enhancements';
 @import 'utilities';
 @import 'mobile_bottom_nav';
+@import 'header_nav';
 
 // Global styles
 body {
     font-family: monospace !important;
     background-color: $background-color !important;
+
+    :focus { 
+        outline: 1.5px solid $primary-color !important; 
+    } 
 }
