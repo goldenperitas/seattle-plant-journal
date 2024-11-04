@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Master data
+tag_names = [
+  ["Science", "#2883b5"],
+  ["Culture", "#3bad8c"],
+  ["History", "#d1912e"],
+  ["Medicine", "#af6cd9"],
+]
+
+tag_names.each do |tag_name|
+  Tag.find_or_create_by!(name: tag_name[0], color: tag_name[1])
+end

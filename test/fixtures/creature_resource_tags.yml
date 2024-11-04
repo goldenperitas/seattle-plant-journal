@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  creature_resource: one
+  tag: one
+
+two:
+  creature_resource: two
+  tag: two

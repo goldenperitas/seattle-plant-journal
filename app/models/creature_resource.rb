@@ -1,6 +1,8 @@
 class CreatureResource < ApplicationRecord
   # Associations
   belongs_to :creature
+  has_many :creature_resource_tags
+  has_many :tags, through: :creature_resource_tags
 
   # Validations
 
