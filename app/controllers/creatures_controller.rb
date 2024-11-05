@@ -10,7 +10,7 @@ class CreaturesController < ApplicationController
   def show
     @creature = Creature.includes(:creature_resources).find(params[:id])
     @creature_resources = @creature.creature_resources
-    @creature_comments = [] #TODO: temporary
+    @creature_comments = [] # TODO: temporary
   end
 
   # GET /creatures/new

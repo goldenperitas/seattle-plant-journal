@@ -10,10 +10,10 @@
 
 # Master data
 tag_names = [
-  ["Science", "#2883b5"],
-  ["Culture", "#3bad8c"],
-  ["History", "#d1912e"],
-  ["Medicine", "#af6cd9"],
+  [ "Science", "#2883b5" ],
+  [ "Culture", "#3bad8c" ],
+  [ "History", "#d1912e" ],
+  [ "Medicine", "#af6cd9" ]
 ]
 
 tag_names.each do |tag_name|
