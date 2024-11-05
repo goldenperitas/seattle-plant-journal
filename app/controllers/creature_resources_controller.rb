@@ -59,7 +59,8 @@ class CreatureResourcesController < ApplicationController
       :resource_type,
       :url,
       :title,
-      :description
+      :description,
+      tag_ids: []
     )
   end
 end

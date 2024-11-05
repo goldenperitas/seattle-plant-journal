@@ -37,6 +37,16 @@
       <%= f.text_area :description %>
     </div>
 
+    <div>
+      Tags (multiple ok)
+      <div>
+        <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |tag| %>
+          <% checked = creature_resource.tags.pluck(:name).include?(tag.text) %>
+          <div class="d-inline-block me-2"><%= tag.label { tag.check_box(class: "me-1", checked: checked) + tag.text } %></div>
+        <% end %>
+      </div>
+    </div>
+  
     <%= f.submit %>
   </div>
 <% end %>
