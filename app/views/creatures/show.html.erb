@@ -30,6 +30,10 @@
 </div>
 
 <div class="mb-3">
+  <%= image_tag @creature.featured_image.variant(:square) || asset_path("photo-coming-soon.png"), class: "featured-image" %>
+</div>
+
+<div class="mb-3">
   <span class="fw-bold">Quick Description: </span>
   <%= simple_format @creature.description %>
 </div>
@@ -51,11 +55,33 @@
 <div id="photos" class="mb-4">
   <h2 class="fs-4"><i class="fa-solid fa-images text-black-50 small me-2"></i>Additional Photos</h2>
   <hr class="mt-1">
+  <div class="row">
+    
+    <% if @creature.additional_images.present? %>
+      <% @creature.additional_images.each do |image| %>
+        <div class="col-6 col-md-4 col-lg-3 mb-3">
+          <%= image_tag image.variant(:square), class: "additional-image" %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="text-center small text-muted pt-1 pb-2">There are no additional photos available. Please check back again in a few days! <i class="fa-solid fa-face-dizzy"></i></div>
+    <% end %>
+    
+  </div>
 </div>
 
 <div id="related" class="mb-4">
   <h2 class="fs-4"><i class="fa-solid fa-seedling text-black-50 small me-2"></i>Related Species</h2>
   <hr class="mt-1">
+
+  <% if @related_species.present? %>
+    <% @related_species.each do |species| %>
+      <%= render "creatures/related_species_card", creature: species %>
+    <% end %>  
+  <% else %>
+    <div class="text-center small text-muted pt-1 pb-2">There are no related species registered yet. Please check back again in a few days! <i class="fa-solid fa-face-dizzy"></i></div>
+  <% end %>
+  
 </div>
 
 <div id="posts" class="mb-4">

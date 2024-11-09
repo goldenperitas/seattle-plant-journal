@@ -61,7 +61,9 @@ class CreaturesController < ApplicationController
       :english_name,
       :scientific_name,
       :twulshootseed,
-      :description
+      :description,
+      :featured_image,
+      additional_images: []
     )
   end
 end

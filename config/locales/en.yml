@@ -35,6 +35,8 @@ en:
         scientific_name: "Scientific Name"
         twulshootseed: "Twulshootseed Name"
         description: "Description"
+        featured_image: "Featured Image"
+        additional_images: "Additional Images"
       creature_resource:
         creature_id: "Creature"
         resource_type: "Resource Type"
