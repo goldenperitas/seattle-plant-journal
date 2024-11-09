@@ -33,8 +33,8 @@ gem "bootsnap", require: false
 
 # Use Active Storage
 gem "image_processing", "~> 1.2"
-gem 'active_storage_validations'
-gem 'aws-sdk-s3', require: false
+gem "active_storage_validations"
+gem "aws-sdk-s3", require: false
 
 # Sass stylesheets
 gem "sassc-rails"
