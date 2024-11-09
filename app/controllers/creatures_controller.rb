@@ -10,6 +10,7 @@ class CreaturesController < ApplicationController
   def show
     @creature = Creature.includes(:creature_resources).find(params[:id])
     @creature_resources = @creature.creature_resources
+    @related_species = Creature.where.not(id: @creature.id).limit(3) # TODO: temporary
     @creature_comments = [] # TODO: temporary
   end
 
