@@ -30,7 +30,9 @@
 </div>
 
 <div class="mb-3">
-  <%= image_tag @creature.featured_image.variant(:square) || asset_path("photo-coming-soon.png"), class: "featured-image" %>
+  <% if @creature.featured_image.present? %>
+    <%= image_tag @creature.featured_image.variant(:square), class: "featured-image" %>
+  <% end %>
 </div>
 
 <div class="mb-3">
