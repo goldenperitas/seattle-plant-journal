@@ -32,7 +32,7 @@
 
 <div class="mb-3">
   <% if @creature.featured_image.present? %>
-    <%= image_tag @creature.featured_image.variant(:square), class: "featured-image" %>
+    <%= image_tag @creature.featured_image, class: "featured-image" %>
   <% end %>
 </div>
 
