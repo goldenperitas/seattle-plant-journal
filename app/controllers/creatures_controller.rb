@@ -12,6 +12,13 @@ class CreaturesController < ApplicationController
     @creature_resources = @creature.creature_resources
     @related_species = Creature.where.not(id: @creature.id).limit(3) # TODO: temporary
     @creature_comments = [] # TODO: temporary
+
+    # URLs for social sharing
+    url = request.original_url
+    content = "Learn about #{@creature.english_name} on Seattle Plant Journal!"
+    @twitter_url = "https://twitter.com/intent/tweet?url=#{url}&text=#{content}&hashtags=seattleplantjournal,plants,seattle"
+    @facebook_url = "https://www.facebook.com/sharer/sharer.php?u=#{url}"
+    @mailto_url = "mailto:?subject=Check out this plant on Seattle Plant Journal!&body=#{url}"
   end
 
   # GET /creatures/new

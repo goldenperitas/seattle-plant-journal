@@ -15,17 +15,18 @@
 </div>
 
 <div class="mb-3">
-  <a href="https://google.com" class="btn btn-outline-secondary rounded-pill" target="_blank">
+  <a href="<%= @facebook_url %>" class="btn btn-outline-secondary rounded-pill" target="_blank">
     <i class="fa-brands fa-facebook small text-muted"></i>
   </a>
-  <a href="https://google.com" class="btn btn-outline-secondary rounded-pill" target="_blank">
+  <a href="<%= @twitter_url %>" class="btn btn-outline-secondary rounded-pill" target="_blank">
     <i class="fa-brands fa-x-twitter small text-muted"></i>
   </a>
-  <a href="https://google.com" class="btn btn-outline-secondary rounded-pill" target="_blank">
+  <a href="<%= @mailto_url %>" class="btn btn-outline-secondary rounded-pill" target="_blank">
     <i class="fa-regular fa-envelope small text-muted"></i>
   </a>
-  <a href="https://google.com" class="btn btn-outline-secondary rounded-pill" target="_blank">
+  <a href="#" id="copy-link-btn" class="btn btn-outline-secondary rounded-pill">
     <i class="fa-regular fa-copy small text-muted"></i>
+    <span id="copy-confirmation" class="small" style="display: none;">Link copied!</span>
   </a>
 </div>
 
@@ -114,3 +115,28 @@
 </div>
 
 <%= render "creatures/mobile_bottom_nav" %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const button = document.getElementById("copy-link-btn");
+    const confirmation = document.getElementById("copy-confirmation");
+
+    button.addEventListener("click", function(event) {
+      event.preventDefault(); // Prevent button from submitting a form
+
+      // The link to be copied
+      const link = "<%= creature_url(@creature) %>";
+
+      // Copy link to clipboard
+      navigator.clipboard.writeText(link).then(function() {
+        // Show confirmation message
+        confirmation.style.display = "inline";
+        setTimeout(() => {
+          confirmation.style.display = "none";
+        }, 2000); // Hide after 2 seconds
+      }).catch(function(error) {
+        console.error("Error copying text: ", error);
+      });
+    });
+  });
+</script>
