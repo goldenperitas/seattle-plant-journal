@@ -1,16 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Tags" %>
+<% content_for :title, "Resource Tags" %>
 
-<h1>Tags</h1>
+<h1>Plant Resource Tags</h1>
 
-<%= link_to "New tag", new_tag_path, class: "btn btn-spj-primary" %>
+<%= link_to "New Tag", new_tag_path, class: "btn btn-spj-primary mb-3" %>
 
 <div id="tags">
   <% @tags.each do |tag| %>
     <%= render tag %>
-    <p>
-      <%= link_to "Show this tag", tag %>
-    </p>
   <% end %>
 </div>
