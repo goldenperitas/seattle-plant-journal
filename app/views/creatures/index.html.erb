@@ -1,11 +1,18 @@
 <% content_for :title, "List of Plants" %>
 
 <main class="container">
-  <div class="header">
-    <h1>Creatures</h1>
-    <%= link_to "New Creature", new_creature_path %>
+  <div class="mb-3">
+    <h1>Plant List</h1>
     <p style="color: green"><%= notice %></p>
   </div>
 
-  <%= render @creatures %>
+  <div class="mb-3">
+    <% @creatures.each do |creature| %>
+      <%= render "creatures/creature_card", creature: creature %>
+    <% end %>
+  </div>
+
+  <div class="d-admin mb-2">
+    <%= link_to "Admin Only: Add New", new_creature_path, { class: "btn btn-spj-primary" } %>
+  </div>
 </main>

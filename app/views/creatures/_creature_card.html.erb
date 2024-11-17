@@ -1,0 +1,17 @@
+<div id="<%= dom_id creature %>" class="card card-spj-default shadow-sm m-1">
+  <div class="card-body pt-2">
+    <div class="row pt-2">
+      <div class="col-4">
+        <%= image_tag creature.featured_image.variant(:thumb) || asset_path("photo-coming-soon.png"), class: "featured-image__thumb" %>
+      </div>
+      <div class="col-8">
+        <div class="fw-bolder"><%= creature.english_name %></div>
+        <div class="text-xs fst-italic text-muted"><%= creature.scientific_name %></div>
+        <% if creature.twulshootseed.present? %>
+          <div class="text-xs text-muted"><%= creature.twulshootseed %></div>
+        <% end %>
+        <div><%= link_to "Learn more", creature_path(creature), class: "small stretched-link" %></div>
+      </div>
+    </div>
+  </div>
+</div>
