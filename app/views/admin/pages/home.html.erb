@@ -1,0 +1,36 @@
+<% content_for :title, "Admin Home" %>
+
+<main class="container">
+  <div class="mb-3">
+    <h1>Admin Home</h1>
+  </div>
+
+  <div class="mb-5">
+    <h2>Database Lists</h2>
+    <hr class="my-2">
+    
+    <div class="fw-bolder mb-2">Plants</div>
+    <div class="mb-3">
+      <%= link_to "All Plants", creatures_path, class: "btn btn-spj-primary d-inline" %>
+      <%= link_to "Add New Plant", new_creature_path, class: "btn btn-spj-outline-primary d-inline" %>
+    </div>
+
+    <div class="fw-bolder mb-2">Plant Resources</div>
+    <div class="mb-3">
+      <%= link_to "All Resources", creature_resources_path, class: "btn btn-spj-primary d-inline" %>
+      <%= link_to "Add New Resource", new_creature_resource_path, class: "btn btn-spj-outline-primary d-inline" %>
+    </div>
+
+    <div class="fw-bolder mb-2">Tags for Plant Resources</div>
+    <div class="mb-3">
+      <%= link_to "All Tags", tags_path, class: "btn btn-spj-primary d-inline" %>
+      <%= link_to "Add New Tag", new_tag_path, class: "btn btn-spj-outline-primary d-inline" %>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <h2>Other Stuff</h2>
+    <hr class="my-2">
+    <div>Coming soon!</div>
+  </div>
+</main>
