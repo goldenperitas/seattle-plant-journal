@@ -96,7 +96,7 @@
   <% if @related_species.present? %>
     <div class="row">
       <% @related_species.each do |species| %>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <%= render "creatures/related_species_card", creature: species %>
         </div>
       <% end %>  
