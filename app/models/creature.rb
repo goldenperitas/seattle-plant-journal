@@ -14,4 +14,11 @@ class Creature < ApplicationRecord
   has_many_attached :additional_images do |attachable|
     attachable.variant :square, resize_to_fill: [ 200, 200 ]
   end
+
+  # ENUMs
+  enum toxic_status: {
+    non_toxic: 0,
+    use_caution: 1,
+    toxic: 2
+  }, _prefix: true
 end
