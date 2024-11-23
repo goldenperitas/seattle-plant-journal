@@ -7,9 +7,13 @@
   </div>
 
   <div class="mb-3">
-    <% @creatures.each do |creature| %>
-      <%= render "creatures/creature_card", creature: creature %>
-    <% end %>
+    <div class="row">
+      <% @creatures.each do |creature| %>
+        <div class="col-md-4">
+          <%= render "creatures/creature_card", creature: creature %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="d-admin mb-2">

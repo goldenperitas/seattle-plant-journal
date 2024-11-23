@@ -90,9 +90,13 @@
   <hr class="mt-1">
 
   <% if @related_species.present? %>
-    <% @related_species.each do |species| %>
-      <%= render "creatures/related_species_card", creature: species %>
-    <% end %>  
+    <div class="row">
+      <% @related_species.each do |species| %>
+        <div class="col-md-4">
+          <%= render "creatures/related_species_card", creature: species %>
+        </div>
+      <% end %>  
+    </div>
   <% else %>
     <div class="text-center small text-muted pt-1 pb-2">There are no related species registered yet. Please check back again in a few days! <i class="fa-solid fa-face-dizzy"></i></div>
   <% end %>
