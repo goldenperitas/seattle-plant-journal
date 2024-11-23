@@ -4,7 +4,9 @@
 
 <h1>List of Plant Resources</h1>
 
-<%= link_to "New creature resource", new_creature_resource_path %>
+<%= link_to "New creature resource", new_creature_resource_path, class: "btn btn-spj-primary mb-2" %>
+
+<div>Ordered by: plant English name</div>
 
 <div id="creature_resources">
   <% @creature_resources.each do |creature_resource| %>

@@ -3,7 +3,7 @@ class CreatureResourcesController < ApplicationController
 
   # GET /creature_resources or /creature_resources.json
   def index
-    @creature_resources = CreatureResource.all
+    @creature_resources = CreatureResource.order(:creature_id)
   end
 
   # GET /creature_resources/1 or /creature_resources/1.json
