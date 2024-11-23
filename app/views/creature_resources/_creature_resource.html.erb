@@ -4,5 +4,9 @@
   <div>Type: <%= creature_resource.resource_type %></div>
   <div>Tags: <%= creature_resource.tags.pluck(:name).join(", ") %></div>
   <div class="small"><%= creature_resource.description %></div>
-  <div><%= link_to "Details", creature_resource_path(creature_resource) %></div>
+  <div>
+    <%= link_to "Details", creature_resource_path(creature_resource) %> |
+    <%= link_to "Edit", edit_creature_resource_path(creature_resource) %> |
+    <%= link_to "Destroy", creature_resource, data: { turbo_method: :delete } %>
+  </div>
 </div>

@@ -43,7 +43,8 @@ class CreatureResourcesController < ApplicationController
   # DELETE /creature_resources/1 or /creature_resources/1.json
   def destroy
     @creature_resource.destroy!
-    redirect_to creature_resources_path, status: :see_other, notice: "Creature resource was successfully destroyed."
+    return_path = request.referer.presence || creature_resources_path
+    redirect_to return_path, status: :see_other, notice: "Creature resource was successfully destroyed."
   end
 
   private
