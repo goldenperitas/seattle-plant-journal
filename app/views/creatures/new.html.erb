@@ -1,10 +1,10 @@
-<% content_for :title, "New creature" %>
+<% content_for :title, "New Plant" %>
 
 <main class="container">
-  <%= link_to sanitize("&larr; Back to creatures"), creatures_path %>
+  <%= link_to sanitize("&larr; Back to the Plant List"), creatures_path %>
 
   <div class="header">
-    <h1>New creature</h1>
+    <h1>New Plant</h1>
   </div>
 
   <%= render "form", creature: @creature %>
