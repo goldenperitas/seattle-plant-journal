@@ -7,6 +7,6 @@
   <div>
     <%= link_to "Details", creature_resource_path(creature_resource) %> |
     <%= link_to "Edit", edit_creature_resource_path(creature_resource) %> |
-    <%= link_to "Destroy", creature_resource, data: { turbo_method: :delete } %>
+    <%= link_to "Destroy", creature_resource, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
   </div>
 </div>

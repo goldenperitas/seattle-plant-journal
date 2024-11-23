@@ -121,7 +121,7 @@
 <div class="d-admin mb-2">
   <span>Admin Only: </span>
   <%= link_to "Edit", edit_creature_path(@creature) %> |
-  <%= link_to "Destroy", @creature, method: :delete %>
+  <%= link_to "Destroy", @creature, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </div>
 
 <div class="mb-3">
