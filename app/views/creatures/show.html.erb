@@ -36,14 +36,24 @@
   <% end %>
 </div>
 
-<div class="mb-3">
+<div class="mb-4">
   <span class="fw-bold">Quick Description: </span>
   <%= simple_format @creature.description %>
 </div>
 
 <div id="links" class="mb-4">
-  <h2 class="fs-4"><i class="fa-solid fa-share-from-square text-black-50 small me-2"></i>Resources</h2>
+  <h2 class="fs-4 d-inline">
+    <i class="fa-solid fa-share-from-square text-black-50 small me-2"></i>
+    Resources
+  </h2>
+  <a href="javascript:void(0)" onclick="toggleCreatureResourceForm();" id="resourceFormHeaderText" class="d-admin">
+    <i class="fa-solid fa-lock me-2"></i>Add New
+  </a>
   <hr class="mt-1">
+
+  <div id="creatureResourceForm" class="p-4 mb-3" style="display: none;">
+    <%= render "creature_resources/form", creature: @creature, creature_resource: CreatureResource.new %>
+  </div>
 
   <% if @creature_resources.present? %>
     <% @creature_resources.each do |creature_resource| %>
@@ -117,6 +127,7 @@
 <%= render "creatures/mobile_bottom_nav" %>
 
 <script>
+  // Copy link to clipboard
   document.addEventListener("DOMContentLoaded", function() {
     const button = document.getElementById("copy-link-btn");
     const confirmation = document.getElementById("copy-confirmation");
@@ -139,4 +150,22 @@
       });
     });
   });
+
+  function toggleCreatureResourceForm() {
+    const form = document.getElementById("creatureResourceForm");
+    const headerText = document.getElementById("resourceFormHeaderText");
+
+    if (form.style.display === "none") {
+      form.style.display = "block";
+      headerText.innerText = "Close Form";
+
+      // Reset form fields
+      form.querySelector("form").reset();
+    } else {
+      form.style.display = "none";
+      headerText.innerText = "Add New";
+    }
+  }
+
+  
 </script>

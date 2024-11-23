@@ -24,7 +24,8 @@ class CreatureResourcesController < ApplicationController
     @creature_resource = CreatureResource.new(creature_resource_params)
 
     if @creature_resource.save
-      redirect_to @creature_resource, notice: "Creature resource was successfully created."
+      return_path = params[:creature_resource][:return_path].presence || @creature_resource
+      redirect_to return_path, notice: "Creature resource was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

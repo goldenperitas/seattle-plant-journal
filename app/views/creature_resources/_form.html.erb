@@ -12,10 +12,14 @@
   <% end %>
 
   <div>
-    <div>
-      <%= f.label :creature_id %>
-      <%= f.collection_select :creature_id, Creature.all, :id, :english_name, {}, {class: ""} %>
-    </div>
+    <% if creature.present? %>
+      <%= f.hidden_field :creature_id, value: creature.id %>
+    <% else %>
+      <div>
+        <%= f.label :creature_id %>
+        <%= f.collection_select :creature_id, Creature.all, :id, :english_name, {}, {class: ""} %>
+      </div>
+    <% end %>
 
     <div>
       <%= f.label :resource_type %>
@@ -47,6 +51,7 @@
       </div>
     </div>
   
-    <%= f.submit %>
+    <%= f.hidden_field :return_path, value: creature_url(creature) if creature.present? %>
+    <%= f.submit "Save", { class: "btn btn-spj-primary" } %>
   </div>
 <% end %>
