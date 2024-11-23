@@ -67,8 +67,10 @@ class CreaturesController < ApplicationController
   def creature_params
     params.require(:creature).permit(
       :english_name,
+      :other_english_names,
       :scientific_name,
       :twulshootseed,
+      :toxic_status,
       :description,
       :featured_image,
       additional_images: []

@@ -32,8 +32,10 @@ en:
     attributes:
       creature:
         english_name: "English Name" 
+        other_english_names: "Other Names"
         scientific_name: "Scientific Name"
         twulshootseed: "Twulshootseed Name"
+        toxic_status: "Toxic Status"
         description: "Description"
         featured_image: "Featured Image"
         additional_images: "Additional Images"
@@ -44,6 +46,11 @@ en:
         url: "Resource URL"
         description: "Description"
   enums:
+    creature:
+      toxic_status:
+        non_toxic: "Non Toxic"
+        use_caution: "Use Caution"
+        toxic: "Toxic"
     creature_resource:
       resource_type:
         website: "Website"

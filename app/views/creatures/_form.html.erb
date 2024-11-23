@@ -23,8 +23,18 @@
     </div>
 
     <div class="mb-3">
+      <%= f.label :other_english_names %>
+      <%= f.text_field :other_english_names %>
+    </div>
+
+    <div class="mb-3">
       <%= f.label :twulshootseed %>
       <%= f.text_field :twulshootseed %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :toxic_status %>
+      <%= f.select :toxic_status, Creature.toxic_statuses.keys.map {|k| [I18n.t("enums.creature.toxic_status.#{k}"), k]}, {}, {class: ""} %>
     </div>
 
     <div class="mb-3">

@@ -8,10 +8,14 @@
   <% end %>
 </div>
 
-<div class="mb-2">
+<div class="mb-3">
   <h1 class="fs-1 fw-bolder mb-1"><%= @creature.english_name %></h1>
   <div class="fst-italic small"><%= @creature.scientific_name %></div>
   <div class="small"><%= @creature.twulshootseed %></div>
+  <div class="small"><%= @creature.other_english_names %></div>
+  <% unless @creature.toxic_status_non_toxic? %>
+    <%= toxic_status_badge(@creature.toxic_status) %>
+  <% end %>
 </div>
 
 <div class="mb-3">
