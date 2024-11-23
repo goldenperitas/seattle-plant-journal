@@ -2,7 +2,7 @@
   <div class="card-body pt-2">
     <div class="row pt-2">
       <div class="col-4">
-        <%= image_tag creature.featured_image.variant(:thumb) || asset_path("photo-coming-soon.png"), class: "featured-image__thumb" %>
+        <%= image_tag creature.featured_image.variant(:thumb).processed || asset_path("photo-coming-soon.png"), class: "featured-image__thumb" %>
       </div>
       <div class="col-8">
         <div class="fw-bolder"><%= creature.english_name %></div>

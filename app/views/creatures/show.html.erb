@@ -32,7 +32,7 @@
 
 <div class="mb-3">
   <% if @creature.featured_image.present? %>
-    <%= image_tag @creature.featured_image.variant(:square), class: "featured-image" %>
+    <%= image_tag @creature.featured_image.variant(:square).processed, class: "featured-image" %>
   <% end %>
 </div>
 
@@ -74,7 +74,7 @@
       <% @creature.additional_images.each do |image| %>
         <div class="col-6 col-md-4 col-lg-3 mb-3">
           <%= link_to url_for(image), target: "_blank" do %>
-            <%= image_tag image.variant(:square), { class: "additional-image" } %>
+            <%= image_tag image.variant(:square).processed, { class: "additional-image" } %>
           <% end %>
         </div>
       <% end %>
