@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   # CreatureResources routes (and their Tags)
   resources :creature_resources
+  patch "shift_resource_order" => "creature_resources#shift_order"
   resources :tags
 
   # Pages for users

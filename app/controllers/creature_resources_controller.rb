@@ -23,6 +23,10 @@ class CreatureResourcesController < ApplicationController
   def create
     @creature_resource = CreatureResource.new(creature_resource_params)
 
+    # Set the order to the last among the creature's resources
+    creature = @creature_resource.creature
+    @creature_resource.order = creature.creature_resources.maximum(:order).to_i + 1
+
     if @creature_resource.save
       return_path = params[:creature_resource][:return_path].presence || @creature_resource
       redirect_to return_path, notice: "Creature resource was successfully created."
@@ -47,6 +51,34 @@ class CreatureResourcesController < ApplicationController
     redirect_to return_path, status: :see_other, notice: "Creature resource was successfully destroyed."
   end
 
+  # PATCH /creature_resources/shift_order
+  def shift_order
+    creature_resource = CreatureResource.find(params[:id])
+    creature = creature_resource.creature
+    direction = params[:direction]
+
+    resources = creature.creature_resources.order(:order).to_a
+    index = resources.index(creature_resource)
+
+    if direction == "up"
+      unless index.zero?
+        resources[index], resources[index - 1] = resources[index - 1], resources[index]
+        resources.each_with_index do |resource, i|
+          resource.update!(order: i)
+        end
+      end
+    else # direction == "down"
+      unless index == resources.length - 1
+        resources[index], resources[index + 1] = resources[index + 1], resources[index]
+        resources.each_with_index do |resource, i|
+          resource.update!(order: i)
+        end
+      end
+    end
+
+    @creature_resources = creature.creature_resources.order(:order)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -62,6 +94,7 @@ class CreatureResourcesController < ApplicationController
       :url,
       :title,
       :description,
+      :order,
       tag_ids: []
     )
   end
