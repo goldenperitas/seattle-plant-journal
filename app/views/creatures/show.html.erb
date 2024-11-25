@@ -60,13 +60,14 @@
   </div>
 
   <% if @creature_resources.present? %>
-    <% @creature_resources.each do |creature_resource| %>
-      <%= render "creatures/creature_resource_card", creature_resource: creature_resource %>
+    <%= turbo_frame_tag "creature_resources_list" do %>
+      <% @creature_resources.each do |creature_resource| %>
+        <%= render "creatures/creature_resource_card", creature_resource: creature_resource %>
+      <% end %>
     <% end %>
   <% else %>
     <div class="text-center small text-muted pt-1 pb-2">There are no resources registered yet. Please check back again in a few days! <i class="fa-solid fa-face-dizzy"></i></div>
   <% end %>
-  
 </div>
 
 <div id="photos" class="mb-4">

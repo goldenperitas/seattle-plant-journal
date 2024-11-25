@@ -3,13 +3,13 @@ class CreaturesController < ApplicationController
 
   # GET /creatures or /creatures.json
   def index
-    @creatures = Creature.all
+    @creatures = Creature.order(:english_name)
   end
 
   # GET /creatures/1 or /creatures/1.json
   def show
     @creature = Creature.includes(:creature_resources).find(params[:id])
-    @creature_resources = @creature.creature_resources
+    @creature_resources = @creature.creature_resources.order(:order)
     @related_species = Creature.where.not(id: @creature.id).limit(3) # TODO: temporary
     @creature_comments = [] # TODO: temporary
 

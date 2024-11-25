@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
+  <table class="table table-index">
+    <tr>
+      <th style="width: 20%;"><%= f.label :name %></th>
+      <td style="width: 80%;"><%= f.text_field :name, class: "form-control" %></td>
+    </tr>
 
-    <div>
-      <%= f.label :color %>
-      <%= f.text_field :color, { placeholder: "#000000" } %>
-    </div>
+    <tr>
+      <th><%= f.label :color %></th>
+      <td><%= f.text_field :color, { class: "form-control", placeholder: "#000000" } %></td>
+    </tr>
+  </table>
 
-    <%= f.submit %>
-  </div>
+  <%= f.submit "Save Tag", class: "btn btn-spj-primary" %>
 <% end %>

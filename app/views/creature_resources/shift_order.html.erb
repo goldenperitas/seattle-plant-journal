@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "creature_resources_list" do %>
+  <% @creature_resources.each do |creature_resource| %>
+    <%= render "creatures/creature_resource_card", creature_resource: creature_resource %>
+  <% end %>
+<% end %>

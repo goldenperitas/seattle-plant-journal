@@ -1,4 +1,4 @@
-<div id="<%= dom_id creature_resource %>" class="card card-spj-default shadow-sm m-1">
+<div class="card card-spj-default shadow-sm m-1">
   <div class="card-body pt-2">
     <div class="mb-1">
       <% creature_resource.tags.each do |tag| %>
@@ -18,6 +18,12 @@
 </div>
 <div class="text-xs text-end d-admin">
   Admin Only:
-  <%= link_to "Edit", edit_creature_resource_path(creature_resource) %> | 
+  <%= link_to shift_resource_order_path(id: creature_resource.id, direction: "up"), data: { turbo_method: :patch } do %>
+    <i class="fa-solid fa-caret-up me-1"></i>Up
+  <% end %>
+  <%= link_to shift_resource_order_path(id: creature_resource.id, direction: "down"), data: { turbo_method: :patch } do %>
+    <i class="fa-solid fa-caret-down me-1"></i>Down
+  <% end %> | 
+  <%= link_to "Edit", edit_creature_resource_path(creature_resource), data: { turbo: false } %> | 
   <%= link_to "Destory", creature_resource, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </div>

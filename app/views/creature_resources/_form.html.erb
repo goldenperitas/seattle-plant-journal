@@ -11,47 +11,47 @@
     </div>
   <% end %>
 
-  <div>
+  <table class="table table-index">
     <% if creature.present? %>
       <%= f.hidden_field :creature_id, value: creature.id %>
     <% else %>
-      <div>
-        <%= f.label :creature_id %>
-        <%= f.collection_select :creature_id, Creature.all, :id, :english_name, {}, {class: ""} %>
-      </div>
+      <tr>
+        <th><%= f.label :creature_id %></th>
+        <td><%= f.collection_select :creature_id, Creature.all, :id, :english_name, {}, { class: "form-control" } %></td>
+      </tr>
     <% end %>
 
-    <div>
-      <%= f.label :resource_type %>
-      <%= f.select :resource_type, CreatureResource.resource_types.keys.map {|k| [I18n.t("enums.creature_resource.resource_type.#{k}"), k]}, {}, {class: ""} %>
-    </div>
+    <tr>
+      <th style="width: 20%;"><%= f.label :resource_type %></th>
+      <td style="width: 80%;"><%= f.select :resource_type, CreatureResource.resource_types.keys.map { |k| [I18n.t("enums.creature_resource.resource_type.#{k}"), k] }, {}, { class: "form-select" } %></td>
+    </tr>
 
-    <div>
-      <%= f.label :url %>
-      <%= f.url_field :url %>
-    </div>
+    <tr>
+      <th><%= f.label :url %></th>
+      <td><%= f.url_field :url, class: "form-control" %></td>
+    </tr>
 
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
+    <tr>
+      <th><%= f.label :title %></th>
+      <td><%= f.text_field :title, class: "form-control" %></td>
+    </tr>
 
-    <div>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </div>
+    <tr>
+      <th><%= f.label :description %></th>
+      <td><%= f.text_area :description, class: "form-control" %></td>
+    </tr>
 
-    <div>
-      Tags (multiple ok)
-      <div>
+    <tr>
+      <th>Tags (multiple ok)</th>
+      <td>
         <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |tag| %>
           <% checked = creature_resource.tags.pluck(:name).include?(tag.text) %>
           <div class="d-inline-block me-2"><%= tag.label { tag.check_box(class: "me-1", checked: checked) + tag.text } %></div>
         <% end %>
-      </div>
-    </div>
-  
-    <%= f.hidden_field :return_path, value: creature_url(creature) if creature.present? %>
-    <%= f.submit "Save", { class: "btn btn-spj-primary" } %>
-  </div>
+      </td>
+    </tr>
+  </table>
+
+  <%= f.hidden_field :return_path, value: creature_url(creature) if creature.present? %>
+  <%= f.submit "Save", { class: "btn btn-spj-primary" } %>
 <% end %>
