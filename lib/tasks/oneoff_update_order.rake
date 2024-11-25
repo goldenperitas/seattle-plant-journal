@@ -1,4 +1,4 @@
-task :update_order => :environment do
+task update_order: :environment do
   all_creature_resources = CreatureResource.all
   creature_resources_by_creature = all_creature_resources.group_by(&:creature_id)
 
