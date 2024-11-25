@@ -24,6 +24,6 @@
   <%= link_to shift_resource_order_path(id: creature_resource.id, direction: "down"), data: { turbo_method: :patch } do %>
     <i class="fa-solid fa-caret-down me-1"></i>Down
   <% end %> | 
-  <%= link_to "Edit", edit_creature_resource_path(creature_resource) %> | 
+  <%= link_to "Edit", edit_creature_resource_path(creature_resource), data: { turbo: false } %> | 
   <%= link_to "Destory", creature_resource, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </div>
