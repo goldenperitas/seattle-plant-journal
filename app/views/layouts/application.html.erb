@@ -21,11 +21,22 @@
     
     <!-- Font Awesome 6 -->
     <script src="https://kit.fontawesome.com/b4ceb66255.js" crossorigin="anonymous"></script>
+  
+    <style>
+      <% if current_user&.is_logged_in_as_admin? %>
+        .d-admin { display: block !important; }
+      <% else %>
+        .d-admin { display: none !important; }
+      <% end %>  
+    </style>
   </head>
 
   <body>
     <!-- Global Header -->
     <%= render "global/header_full" %>
+
+    <!-- Flash -->
+    <%= render "layouts/main_flash" %>
 
     <!-- Content -->
     <div class="container">

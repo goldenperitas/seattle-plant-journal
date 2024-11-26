@@ -1,0 +1,12 @@
+<div class="main-flash mx-3">
+  <% if !flash.empty? %>
+    <% flash.each do |key, value| %>
+      <div class="alert <%= key == "notice" ? "alert-success" : "alert-danger" %> alert-dismissible fade show" role="alert">
+        <div class="text-center">
+            <%= value %>
+        </div>
+        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+  <% end %>
+</div>

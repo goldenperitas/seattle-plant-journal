@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "creatures#index"
 
+  # Devise routes for users
+  devise_for :users
+
   # Creatures routes
   resources :creatures
 
