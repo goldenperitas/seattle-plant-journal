@@ -8,7 +8,11 @@ class CreaturesController < ApplicationController
 
   # GET /creatures/1 or /creatures/1.json
   def show
-    @creature = Creature.includes(:creature_resources).find(params[:id])
+    if params[:slug]
+      @creature = Creature.includes(:creature_resources).find_by!(slug: params[:slug])
+    else
+      @creature = Creature.includes(:creature_resources).find(params[:id])
+    end
     @creature_resources = @creature.creature_resources.order(:order)
     @related_species = Creature.where.not(id: @creature.id).limit(3) # TODO: temporary
     @creature_comments = [] # TODO: temporary
@@ -35,7 +39,7 @@ class CreaturesController < ApplicationController
     @creature = Creature.new(creature_params)
 
     if @creature.save
-      redirect_to creatures_path, notice: "Creature was successfully created."
+      redirect_to "/#{@creature.slug}", notice: "Creature was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -44,7 +48,7 @@ class CreaturesController < ApplicationController
   # PATCH/PUT /creatures/1 or /creatures/1.json
   def update
     if @creature.update(creature_params)
-      redirect_to @creature, notice: "Creature was successfully updated."
+      redirect_to "/#{@creature.slug}", notice: "Creature was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -60,7 +64,13 @@ class CreaturesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_creature
-    @creature = Creature.find(params[:id])
+    if params[:id]
+      @creature = Creature.find(params[:id])
+    elsif params[:slug]
+      @creature = Creature.find_by!(slug: params[:slug])
+    else
+      raise ActiveRecord::RecordNotFound
+    end
   end
 
   # Only allow a list of trusted parameters through.

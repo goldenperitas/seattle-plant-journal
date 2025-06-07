@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "home" => "pages#home"
   end
+
+  # Slug-based creature routes (must be last to avoid conflicts)
+  get ":slug", to: "creatures#show", constraints: { slug: /[a-z0-9\-]+/ }
 end

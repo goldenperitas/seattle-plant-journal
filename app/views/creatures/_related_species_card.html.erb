@@ -14,7 +14,7 @@
         <% if creature.twulshootseed.present? %>
           <div class="text-xs text-muted"><%= creature.twulshootseed %></div>
         <% end %>
-        <div><%= link_to "Learn more", creature_path(creature), class: "small stretched-link" %></div>
+        <div><%= link_to "Learn more", "/#{creature.slug}", class: "small stretched-link" %></div>
       </div>
     </div>
   </div>

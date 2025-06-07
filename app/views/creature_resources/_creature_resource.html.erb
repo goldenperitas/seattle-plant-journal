@@ -1,5 +1,5 @@
 <div id="<%= dom_id creature_resource %>" class="border p-2 m-1">
-  <div>Creature: <%= link_to creature_resource.creature.english_name, creature_path(creature_resource.creature) %></div>
+  <div>Creature: <%= link_to creature_resource.creature.english_name, "/#{creature_resource.creature.slug}" %></div>
   Title: <%= link_to creature_resource.title, creature_resource.url %>
   <div>Type: <%= creature_resource.resource_type %></div>
   <div>Tags: <%= creature_resource.tags.pluck(:name).join(", ") %></div>
