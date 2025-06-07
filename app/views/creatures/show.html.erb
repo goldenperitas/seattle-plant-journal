@@ -145,7 +145,7 @@
       event.preventDefault(); // Prevent button from submitting a form
 
       // The link to be copied
-      const link = "<%= creature_url(@creature) %>";
+      const link = "<%= request.base_url %>/<%= @creature.slug %>";
 
       // Copy link to clipboard
       navigator.clipboard.writeText(link).then(function() {
