@@ -54,7 +54,7 @@ class CreaturesController < ApplicationController
   # DELETE /creatures/1 or /creatures/1.json
   def destroy
     @creature.destroy!
-    redirect_to creatures_path, status: :see_other, notice: "Creature was successfully destroyed."
+    redirect_to root_path, status: :see_other, notice: "Creature was successfully destroyed."
   end
 
   private

@@ -1,4 +1,4 @@
-<%= form_with(model: creature, url: creature.persisted? ? "/#{creature.slug}" : creatures_path) do |f| %>
+<%= form_with(model: creature, url: creature.persisted? ? "/#{creature.slug}" : root_path) do |f| %>
   <% if creature.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(creature.errors.count, "error") %> prohibited this creature from being saved:</h2>
