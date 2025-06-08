@@ -20,11 +20,11 @@ class Creature < ApplicationRecord
   end
 
   # ENUMs
-  enum toxic_status: {
+  enum :toxic_status, {
     non_toxic: 0,
     use_caution: 1,
     toxic: 2
-  }, _prefix: true
+  }, prefix: true
 
   # Instance Methods
   def to_param

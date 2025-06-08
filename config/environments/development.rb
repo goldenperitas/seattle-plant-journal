@@ -80,5 +80,5 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   # config/environments/development.rb
-  config.sass.inline_source_maps = true
+  # config.sass.inline_source_maps = true  # This is no longer needed with dartsass-rails
 end
