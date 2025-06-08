@@ -40,7 +40,7 @@ class CreatureResourcesController < ApplicationController
   # PATCH/PUT /creature_resources/1 or /creature_resources/1.json
   def update
     if @creature_resource.update(creature_resource_params)
-      redirect_to @creature_resource, notice: "Creature resource was successfully updated."
+      redirect_to "/#{@creature_resource.creature.slug}", notice: "Creature resource was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
