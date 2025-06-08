@@ -31,4 +31,8 @@ Rails.application.routes.draw do
 
   # Slug-based creature routes (must be last to avoid conflicts)
   get ":slug", to: "creatures#show", constraints: { slug: /[a-z0-9\-]+/ }
+  get ":slug/edit", to: "creatures#edit", constraints: { slug: /[a-z0-9\-]+/ }
+  patch ":slug", to: "creatures#update", constraints: { slug: /[a-z0-9\-]+/ }
+  put ":slug", to: "creatures#update", constraints: { slug: /[a-z0-9\-]+/ }
+  delete ":slug", to: "creatures#destroy", constraints: { slug: /[a-z0-9\-]+/ }
 end

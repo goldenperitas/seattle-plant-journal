@@ -130,8 +130,8 @@
 <% if current_user&.admin? %>
   <div class="d-admin mb-2">
     <span>Admin Only: </span>
-    <%= link_to "Edit", edit_creature_path(@creature) %> |
-    <%= link_to "Destroy", @creature, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <%= link_to "Edit", "/#{@creature.slug}/edit" %> |
+    <%= link_to "Destroy", "/#{@creature.slug}", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
   </div>
 <% end %>
 

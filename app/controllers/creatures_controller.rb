@@ -10,11 +10,6 @@ class CreaturesController < ApplicationController
 
   # GET /creatures/1 or /creatures/1.json
   def show
-    if params[:slug]
-      @creature = Creature.includes(:creature_resources).find_by!(slug: params[:slug])
-    else
-      @creature = Creature.includes(:creature_resources).find(params[:id])
-    end
     @creature_resources = @creature.creature_resources.order(:order)
     @related_species = Creature.where.not(id: @creature.id).limit(3) # TODO: temporary
     @creature_comments = [] # TODO: temporary
@@ -66,10 +61,10 @@ class CreaturesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_creature
-    if params[:id]
-      @creature = Creature.find(params[:id])
-    elsif params[:slug]
-      @creature = Creature.find_by!(slug: params[:slug])
+    if params[:slug]
+      @creature = Creature.includes(:creature_resources).find_by!(slug: params[:slug])
+    elsif params[:id]
+      @creature = Creature.includes(:creature_resources).find(params[:id])
     else
       raise ActiveRecord::RecordNotFound
     end
