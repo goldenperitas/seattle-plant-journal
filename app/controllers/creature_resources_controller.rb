@@ -1,4 +1,6 @@
 class CreatureResourcesController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+  before_action :admin_required_for_modification, except: [:show]
   before_action :set_creature_resource, only: %i[ show edit update destroy ]
 
   # GET /creature_resources or /creature_resources.json

@@ -5,8 +5,9 @@
 <%= render @creature_resource %>
 
 <div>
-  <%= link_to "Edit this plant resource", edit_creature_resource_path(@creature_resource) %> |
+  <% if current_user&.admin? %>
+    <%= link_to "Edit this plant resource", edit_creature_resource_path(@creature_resource) %> |
+    <%= button_to "Destroy this plant resource", @creature_resource, method: :delete %>
+  <% end %>
   <%= link_to "Back to plant resources", creature_resources_path %>
-
-  <%= button_to "Destroy this plant resource", @creature_resource, method: :delete %>
 </div>

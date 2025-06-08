@@ -16,7 +16,9 @@
     </div>
   </div>
 
-  <div class="d-admin mb-2">
-    <%= link_to "Admin Only: Add New", new_creature_path, { class: "btn btn-spj-primary" } %>
-  </div>
+  <% if current_user&.admin? %>
+    <div class="d-admin mb-2">
+      <%= link_to "Admin Only: Add New", new_creature_path, { class: "btn btn-spj-primary" } %>
+    </div>
+  <% end %>
 </main>

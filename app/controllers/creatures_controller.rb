@@ -1,4 +1,6 @@
 class CreaturesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :admin_required_for_modification, except: [:index, :show]
   before_action :set_creature, only: %i[ show edit update destroy ]
 
   # GET /creatures or /creatures.json

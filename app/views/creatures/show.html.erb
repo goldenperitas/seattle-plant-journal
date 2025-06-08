@@ -50,14 +50,18 @@
     <i class="fa-solid fa-share-from-square text-black-50 small me-2"></i>
     Resources
   </h2>
-  <a href="javascript:void(0)" onclick="toggleCreatureResourceForm();" id="resourceFormHeaderText" class="d-admin">
-    <i class="fa-solid fa-lock me-2"></i>Add New
-  </a>
+  <% if current_user&.admin? %>
+    <a href="javascript:void(0)" onclick="toggleCreatureResourceForm();" id="resourceFormHeaderText" class="d-admin">
+      <i class="fa-solid fa-lock me-2"></i>Add New
+    </a>
+  <% end %>
   <hr class="mt-1">
 
-  <div id="creatureResourceForm" class="p-4 mb-3" style="display: none;">
-    <%= render "creature_resources/form", creature: @creature, creature_resource: CreatureResource.new %>
-  </div>
+  <% if current_user&.admin? %>
+    <div id="creatureResourceForm" class="p-4 mb-3" style="display: none;">
+      <%= render "creature_resources/form", creature: @creature, creature_resource: CreatureResource.new %>
+    </div>
+  <% end %>
 
   <% if @creature_resources.present? %>
     <%= turbo_frame_tag "creature_resources_list" do %>
@@ -123,11 +127,13 @@
   <% end %>
 </div>
 
-<div class="d-admin mb-2">
-  <span>Admin Only: </span>
-  <%= link_to "Edit", edit_creature_path(@creature) %> |
-  <%= link_to "Destroy", @creature, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-</div>
+<% if current_user&.admin? %>
+  <div class="d-admin mb-2">
+    <span>Admin Only: </span>
+    <%= link_to "Edit", edit_creature_path(@creature) %> |
+    <%= link_to "Destroy", @creature, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  </div>
+<% end %>
 
 <div class="mb-3">
   <span class="small text-muted">Last updated at: <%= @creature.updated_at.strftime("%Y-%m-%d") %></span>

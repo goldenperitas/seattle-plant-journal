@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USERNAME"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+
+  def ensure_admin
+    redirect_to root_path, alert: "Access denied." unless current_user&.admin?
+  end
+
+  def admin_required_for_modification
+    redirect_to root_path, alert: "Access denied." unless current_user&.admin?
+  end
 end
