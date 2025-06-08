@@ -31,13 +31,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Application Architecture
 
 ### Core Domain Models
-The application is a plant journal focused on Seattle-area flora with three main entities:
+The application is a plant journal focused on Seattle-area flora with four main entities:
 
 1. **Creature** (app/models/creature.rb) - Represents plants/species
    - Has english_name, scientific_name, twulshootseed (indigenous name)
    - Supports toxic_status enum (non_toxic, use_caution, toxic)
    - Uses Active Storage for featured_image and additional_images with variants
    - Has many creature_resources (educational materials)
+   - Includes slug-based URLs for SEO-friendly routing
 
 2. **CreatureResource** (app/models/creature_resource.rb) - Educational materials linked to creatures
    - Belongs to creature, has many tags through creature_resource_tags
@@ -47,20 +48,39 @@ The application is a plant journal focused on Seattle-area flora with three main
 3. **Tag** (app/models/tag.rb) - Categorization system for resources
    - Simple name/color attributes for organizing creature resources
 
+4. **User** (app/models/user.rb) - Authentication and authorization
+   - Uses Devise for authentication (database_authenticatable, registerable, recoverable, rememberable, validatable)
+   - Has admin boolean field (default: false) for role-based access control
+   - Admin users can create/edit all content, regular users have view-only access
+
 ### Key Controllers
-- **CreaturesController** - Main entity CRUD, includes social sharing URLs in show action
-- **CreatureResourcesController** - Manages educational resources, includes shift_order action for reordering
-- **TagsController** - Basic CRUD for tags
+- **CreaturesController** - Main entity CRUD, includes social sharing URLs in show action, public index/show, admin-only create/edit/destroy
+- **CreatureResourcesController** - Manages educational resources, includes shift_order action for reordering, admin-only except show action
+- **TagsController** - Basic CRUD for tags, admin-only access
+- **Admin::PagesController** - Admin dashboard, requires admin authentication
 
 ### Database
 - PostgreSQL with Active Storage for file attachments
 - Image variants are configured: :square (800x800), :thumb (150x150), :square for additional_images (200x200)
+- Uses ActiveRecord::Schema[8.0] format
+- Includes Devise users table with admin boolean field
 
 ### Frontend Stack
-- Rails 7.2 with Hotwire (Turbo + Stimulus)
-- SCSS with Bootstrap enhancements
+- Rails 8.0.2 with Hotwire (Turbo + Stimulus)
+- SCSS with Bootstrap enhancements (using dartsass-rails)
 - PWA support with manifest and service worker
 - Mobile-responsive design with bottom navigation
+- Devise views for authentication (login, registration, password reset)
+
+### Authentication & Access Control
+- **Public Access**: Site is fully accessible to anonymous users for viewing content
+- **User Registration**: Optional user accounts for future features (e.g., commenting)
+- **Admin Access**: Admin users (admin: true) can:
+  - Access /admin namespace for management dashboard
+  - Create, edit, and delete all creatures, resources, and tags
+  - View admin-only UI elements (styled with d-admin CSS class)
+- **Regular Users**: View-only access, no CRUD permissions
+- **Protection**: Controller actions protected with authenticate_user! and admin_required_for_modification
 
 ### Deployment
 - Dockerized application with Dockerfile
