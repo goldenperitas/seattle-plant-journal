@@ -7,7 +7,7 @@ class CreatureResource < ApplicationRecord
   # Validations
 
   # ENUMs
-  enum resource_type: {
+  enum :resource_type, {
     website: 0,
     video: 1,
     audio: 2,
@@ -17,5 +17,5 @@ class CreatureResource < ApplicationRecord
     location: 6,
     art: 7,
     other: 99
-  }, _prefix: true
+  }, prefix: true
 end
